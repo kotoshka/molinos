@@ -36,7 +36,7 @@ class Question extends Model
                 ($data['theme']);
                 $message->from('kopos91@yandex.ru', 'Kopose');
             });
-        } catch (Swift_TransportException  $e) {
+        } catch (\Swift_TransportException  $e) {
             Log::error($e->getMessage());
         }
     }
