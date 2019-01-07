@@ -23,16 +23,14 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
         $message = '';
-
         $this->validate($request, [
             'author' => 'required',
             'question' => 'required',
             'email' => 'required|email',
-            'file.*' => 'mimes:png,gif,jpeg,txt,pdf,doc'
+            'file.*' => 'mimes:png,gif,jpeg,txt,pdf,doc',
+            // 'g-recaptcha-response' => 'required|captcha'
         ]);
-
         $newID = Question::storeQuestion($request->author, $request->email, $request->question);
-
         if ($newID) {
             $message = 'Message had been send correctly!!!';
             if ($request->hasFile('file')) {
@@ -40,23 +38,21 @@ class QuestionController extends Controller
                 File::storeFiles($files, $newID, 'App\Question');
             }
         }
-
-        return redirect()->route('questions.create')->with('message', $message);
+        return redirect()
+            ->route('questions.create')
+            ->with('message', $message);
     }
 
-    public function delete($question_id)
+    public function delete(string $question_id)
     {
         Question::destroy($question_id);
-
         File::deleteFiles($question_id, 'App\Question');
-
         return redirect()->route('questions.list');
     }
 
-    public function answer($question_id)
+    public function answer(string $question_id)
     {
-        $data['question_id'] = $question_id;
-        return View('admin.answer', $data);
+        return View('admin.answer', ['question_id' => $question_id]);
     }
 
     public function reply(Request $request)
@@ -64,13 +60,10 @@ class QuestionController extends Controller
         $this->validate($request, [
             'answer' => 'required'
         ]);
-
         $question = Question::find($request->question_id);
         $question->answer = $request->answer;
         $question->save();
-
-        Question::mail('Answer for your question',$question->email, $request->answer);
-
+        Question::mail('Answer for your question', $question->email, $request->answer);
         return redirect()->route('questions.list');
     }
 }

@@ -14,7 +14,7 @@ class File extends Model
     public static function storeFiles(array $files, $owner_id, $owner_type)
     {
         foreach ($files as $file) {
-            $name = date('H-i-s-').$file->getClientOriginalName();
+            $name = date('H-i-s-') . $file->getClientOriginalName();
             $file->move(public_path() . '/images/', $name);
 
             $image = new File();

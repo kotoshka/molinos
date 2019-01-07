@@ -8,10 +8,11 @@
                 </div>
                 <div class="block-content collapse in">
                     <div class="span12">
-                        <form class="form-horizontal" method="post" action="{{route('questions.store')}}" enctype="multipart/form-data">
+                        <form class="form-horizontal" method="post" action="{{route('questions.store')}}"
+                              enctype="multipart/form-data">
                             {{csrf_field()}}
                             <fieldset>
-                                <legend>Callback form </legend>
+                                <legend>Callback form</legend>
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <ul>
@@ -31,19 +32,23 @@
                                             <div class="control-group">
                                                 <label class="control-label" for="author">Name</label>
                                                 <div class="controls">
-                                                    <input class="input-xlarge" id="author" name="author" type="text" placeholder="Enter name ..." value="{{old('author')}}">
+                                                    <input class="input-xlarge" id="author" name="author" type="text"
+                                                           placeholder="Enter name ..." value="{{old('author')}}">
                                                 </div>
                                             </div>
                                             <div class="control-group">
                                                 <label class="control-label" for="email">Email</label>
                                                 <div class="controls">
-                                                    <input class="input-xlarge" id="email" name="email" type="text" placeholder="Enter email ..." value="{{old('email')}}">
+                                                    <input class="input-xlarge" id="email" name="email" type="text"
+                                                           placeholder="Enter email ..." value="{{old('email')}}">
                                                 </div>
                                             </div>
                                             <div class="control-group">
                                                 <label class="control-label" for="question">Question</label>
                                                 <div class="controls">
-                                                    <textarea class="input-xlarge textarea" id="question" name="question" rows="8" placeholder="Enter text ...">{{old('question')}}</textarea>
+                                                    <textarea class="input-xlarge textarea" id="question"
+                                                              name="question" rows="8"
+                                                              placeholder="Enter text ...">{{old('question')}}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -57,7 +62,8 @@
                                                 <div class="control-group form-border">
                                                     <p class="gray-text"> Drop files here or click to upload...</p>
                                                     <div id="drop-files" class="full-width" ondragover="return false">
-                                                        <input type="file" name="file[]" id="uploadbtn" class="hidden-input" multiple />
+                                                        <input type="file" name="file[]" id="uploadbtn"
+                                                               class="hidden-input" multiple/>
                                                     </div>
                                                     <div id="uploaded-holder">
                                                         <div id="dropped-files">
@@ -70,8 +76,10 @@
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-large btn-primary">Send</button>
                                     </div>
+                                    {{--                                    {!! app('captcha')->render(); !!}--}}
                                 @endif
                             </fieldset>
+
                         </form>
                     </div>
                 </div>

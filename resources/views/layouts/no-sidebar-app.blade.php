@@ -11,9 +11,7 @@
 
     <!-- Scripts -->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
-    {{--<script src="{{ asset('js/jquery-1.9.1.min.js') }}" defer></script>--}}
     <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-    {{--<script src="{{ asset('js/_____scripts.js') }}" defer></script>--}}
     <script src="{{ asset('js/javascript.js') }}" defer></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -22,12 +20,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
+    <!-- recaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 <div class="navbar">
