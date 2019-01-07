@@ -11,8 +11,7 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::with('getFiles')->get();
-        $data['questions'] = $questions;
-        return View('admin.questions', $data);
+        return View('admin.questions', ['questions' => $questions]);
     }
 
     public function create()
@@ -52,7 +51,9 @@ class QuestionController extends Controller
 
     public function answer(string $question_id)
     {
-        return View('admin.answer', ['question_id' => $question_id]);
+        return View('admin.answer', [
+            'question_id' => $question_id
+        ]);
     }
 
     public function reply(Request $request)
