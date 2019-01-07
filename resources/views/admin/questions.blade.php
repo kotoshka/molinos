@@ -27,11 +27,13 @@
                                                 Delete
                                             </a>
                                         </div>
-                                        <div class="answer-item">
-                                            <a href="{{route('questions.answer', ['question_id' => $question->id])}}">
-                                                Answer
-                                            </a>
-                                        </div>
+                                        @if(!isset($question->answer))
+                                            <div class="answer-item">
+                                                <a href="{{route('questions.answer', ['question_id' => $question->id])}}">
+                                                    Answer
+                                                </a>
+                                            </div>
+                                        @endif
                                     </td>
                                     <td>{{$question->author}}</td>
                                     <td>{{$question->email}}</td>

@@ -16,6 +16,8 @@ class SettingsController extends Controller
 
     public function edit(Request $request)
     {
+        $message = '';
+
         $this->validate($request, [
             'site_name' => 'required',
             'admin_email' => 'required|email',
@@ -24,8 +26,10 @@ class SettingsController extends Controller
         $settings = Settings::find(1);
         $settings->site_name = $request->site_name;
         $settings->admin_email = $request->admin_email;
-        $settings->save();
+        if($settings->save()) {
+            $message = "Data successfully changed!";
+        }
 
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.index')->with('message', $message);
     }
 }

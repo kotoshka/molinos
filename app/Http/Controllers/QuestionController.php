@@ -41,13 +41,15 @@ class QuestionController extends Controller
             }
         }
 
-        return redirect()->route('questions.create' , ['message' => $message]);
+        return redirect()->route('questions.create')->with('message', $message);
     }
 
     public function delete($question_id)
     {
         Question::destroy($question_id);
+
         File::deleteFiles($question_id, 'App\Question');
+
         return redirect()->route('questions.list');
     }
 
@@ -68,6 +70,7 @@ class QuestionController extends Controller
         $question->save();
 
         Question::mail('Answer for your question',$question->email, $request->answer);
+
         return redirect()->route('questions.list');
     }
 }

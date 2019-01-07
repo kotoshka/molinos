@@ -20,6 +20,11 @@
                                     </ul>
                                 </div>
                             @endif
+                            @if (session('message'))
+                                <div class="alert alert-success">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
                             <div class="control-group">
                                 <label class="control-label" for="site_name">Site name</label>
                                 <div class="controls">

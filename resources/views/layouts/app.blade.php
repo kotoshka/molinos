@@ -42,11 +42,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
                     @else
                         <li class="dropdown">
                             <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
@@ -89,17 +84,6 @@
                 <li class="{{(\Request::route()->getName() == 'questions.create') ? 'active' : '' }}">
                     <a href="{{route('questions.create')}}">Create Question</a>
                 </li>
-                <li class="">
-                    <a href="#">Test</a>
-                </li>
-                <li class="">
-                    <a href="#">Test</a>
-                </li>
-                <li class="">
-                    <a href="#">Test</a>
-                </li>
-
-
             </ul>
         </div>
         <div class="span9" id="content">

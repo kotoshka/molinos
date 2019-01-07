@@ -21,8 +21,10 @@
                                         </ul>
                                     </div>
                                 @endif
-                                @if(isset( Request()->message))
-                                    <span style="color: green">{{ Request()->message }}</span>
+                                @if (session('message'))
+                                    <div class="alert alert-success">
+                                        {{ session('message') }}
+                                    </div>
                                 @else
                                     <div class="form-wrapper">
                                         <div class="form-col">
